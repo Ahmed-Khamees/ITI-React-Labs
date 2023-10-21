@@ -1,25 +1,19 @@
 import { React, useState, useEffect } from 'react'
+import useGetDataFromAPI from '../../hooks/useGetDataFromAPI';
+import { Loading } from '../LabForth/Loading';
 import { Product } from './Product';
 
 export const Shop = () => {
 
-  const [ProductsArray, setProductsArray] = useState([]);
-
-  useEffect(() => fetchProducts(), []);
-
-  const fetchProducts = () => {
-    fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(json => setProductsArray(json))
-  }
+  let { data, loading, error } = useGetDataFromAPI('https://fakestoreapi.com/products');
 
   return (
-    <div className="row row-cols-5 contaienr mx-auto">
-      {ProductsArray?.map((product) => {
-        return <Product id={product.id} title={product.title} price={product.price} image={product.image} rating={product.rating} category={product.category} />
-      })}
-    </div>
-
-    // <h2>test</h2>
+    <Loading loading={loading} error={error}>
+      <div className="row row-cols-5 contaienr mx-auto py-5">
+        {data?.map((product) => {
+          return <Product id={product.id} title={product.title} price={product.price} image={product.image} rating={product.rating} category={product.category} />
+        })}
+      </div>
+    </Loading>
   )
 }
