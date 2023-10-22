@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from '../../redux/counterSlice'
 
 export const Counter = () => {
-    let [count, setCount] = useState(10);
+    const count = useSelector((state) => state.counter.value);
+    const dispatch = useDispatch();
 
     const decreaseBtnClicked = () => {
-        if(count > 0){
-            setCount(count - 1);
-        }
+        dispatch(decrement());
     }
 
     const increaseBtnClicked = () => {
-        setCount(count + 1);
+        dispatch(increment());
     }
 
     return (

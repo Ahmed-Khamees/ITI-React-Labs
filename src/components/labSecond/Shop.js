@@ -11,7 +11,7 @@ export const Shop = () => {
     <Loading loading={loading} error={error}>
       <div className="row row-cols-5 contaienr mx-auto py-5">
         {data?.map((product) => {
-          return <Product id={product.id} title={product.title} price={product.price} image={product.image} rating={product.rating} category={product.category} />
+          return <Product key={product.id} id={product.id} title={product.title} price={product.price} image={product.image} rating={product.rating} category={product.category} />
         })}
       </div>
     </Loading>
