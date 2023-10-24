@@ -17,6 +17,8 @@ export const NavigationBar = () => {
             <Link to="/about" className='text-decoration-none text-dark'>About</Link>
             <Link to="/labone" className='text-decoration-none text-dark'>Lab One</Link>
             <Link to="/counter" className='text-decoration-none text-dark'>Counter</Link>
+            <Link to="/login" className='text-decoration-none text-dark'>Log In</Link>
+            <Link to="/register" className='text-decoration-none text-dark'>Register</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
